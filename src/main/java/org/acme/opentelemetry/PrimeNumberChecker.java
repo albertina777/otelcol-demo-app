@@ -1,11 +1,8 @@
 package org.acme.opentelemetry;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-
 import io.opentelemetry.api.trace.Span;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.*;
 
 @Path("/prime")
 public class PrimeNumberChecker {

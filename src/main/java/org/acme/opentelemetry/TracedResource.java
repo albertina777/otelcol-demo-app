@@ -3,21 +3,14 @@ package org.acme.opentelemetry;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Request;
-import javax.ws.rs.core.UriInfo;
-
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
 
 import io.opentelemetry.api.common.AttributeKey;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.trace.Span;
 import io.quarkus.logging.Log;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.*;
 
 @Path("/")
 public class TracedResource {

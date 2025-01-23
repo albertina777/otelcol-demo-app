@@ -1,0 +1,157 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.openshift.io/vcs-uri: https://github.com/albertina777/otelcol-demo-app.git
+    app.quarkus.io/quarkus-version: 3.15.1.redhat-00005
+    app.quarkus.io/commit-id: 4d40ec60f1887063d07351d98491c0f6585475b8
+    app.quarkus.io/vcs-uri: https://github.com/albertina777/otelcol-demo-app.git
+    app.quarkus.io/build-timestamp: 2025-01-23 - 15:50:03 +0000
+  labels:
+    app.kubernetes.io/name: my-service
+    app.kubernetes.io/version: 1.0.1-SNAPSHOT
+    app.kubernetes.io/managed-by: quarkus
+    app.openshift.io/runtime: quarkus
+  name: my-service
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app.kubernetes.io/name: my-service
+    app.kubernetes.io/version: 1.0.1-SNAPSHOT
+  type: ClusterIP
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    app.kubernetes.io/name: my-service
+    app.kubernetes.io/version: 1.0.1-SNAPSHOT
+  name: s2i-java
+spec:
+  dockerImageRepository: fabric8/s2i-java
+  lookupPolicy:
+    local: true
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  annotations:
+    app.openshift.io/vcs-uri: https://github.com/albertina777/otelcol-demo-app.git
+    app.quarkus.io/quarkus-version: 3.15.1.redhat-00005
+    app.quarkus.io/commit-id: 4d40ec60f1887063d07351d98491c0f6585475b8
+    app.quarkus.io/vcs-uri: https://github.com/albertina777/otelcol-demo-app.git
+    app.quarkus.io/build-timestamp: 2025-01-23 - 15:50:03 +0000
+  labels:
+    app.kubernetes.io/name: my-service
+    app.kubernetes.io/version: 1.0.1-SNAPSHOT
+    app.kubernetes.io/managed-by: quarkus
+    app.openshift.io/runtime: quarkus
+  name: my-service
+spec:
+  lookupPolicy:
+    local: true
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  annotations:
+    app.openshift.io/vcs-uri: https://github.com/albertina777/otelcol-demo-app.git
+    app.quarkus.io/quarkus-version: 3.15.1.redhat-00005
+    app.quarkus.io/commit-id: 4d40ec60f1887063d07351d98491c0f6585475b8
+    app.quarkus.io/vcs-uri: https://github.com/albertina777/otelcol-demo-app.git
+    app.quarkus.io/build-timestamp: 2025-01-23 - 15:50:03 +0000
+  labels:
+    app.kubernetes.io/name: my-service
+    app.kubernetes.io/version: 1.0.1-SNAPSHOT
+    app.kubernetes.io/managed-by: quarkus
+    app.openshift.io/runtime: quarkus
+  name: my-service
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: my-service:1.0.1-SNAPSHOT
+  source:
+    binary: {}
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: s2i-java:2.3
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    app.openshift.io/vcs-uri: https://github.com/albertina777/otelcol-demo-app.git
+    app.quarkus.io/quarkus-version: 3.15.1.redhat-00005
+    app.quarkus.io/commit-id: 4d40ec60f1887063d07351d98491c0f6585475b8
+    app.quarkus.io/vcs-uri: https://github.com/albertina777/otelcol-demo-app.git
+    app.quarkus.io/build-timestamp: 2025-01-23 - 15:50:03 +0000
+  labels:
+    app.kubernetes.io/managed-by: quarkus
+    app.openshift.io/runtime: quarkus
+    app.kubernetes.io/name: my-service
+    app.kubernetes.io/version: 1.0.1-SNAPSHOT
+  name: my-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: my-service
+      app.kubernetes.io/version: 1.0.1-SNAPSHOT
+  template:
+    metadata:
+      annotations:
+        alpha.image.policy.openshift.io/resolve-names: '*'
+        app.openshift.io/vcs-uri: https://github.com/albertina777/otelcol-demo-app.git
+        app.quarkus.io/quarkus-version: 3.15.1.redhat-00005
+        app.quarkus.io/commit-id: 4d40ec60f1887063d07351d98491c0f6585475b8
+        app.quarkus.io/vcs-uri: https://github.com/albertina777/otelcol-demo-app.git
+        app.quarkus.io/build-timestamp: 2025-01-23 - 15:50:03 +0000
+      labels:
+        app.kubernetes.io/managed-by: quarkus
+        app.openshift.io/runtime: quarkus
+        app.kubernetes.io/name: my-service
+        app.kubernetes.io/version: 1.0.1-SNAPSHOT
+    spec:
+      containers:
+        - env:
+            - name: SERVICE_NAME
+              value: http://my-service
+            - name: JAVA_APP_JAR
+              value: /deployments/quarkus-run.jar
+          image: my-service:1.0.1-SNAPSHOT
+          imagePullPolicy: Always
+          name: my-service
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    app.openshift.io/vcs-uri: https://github.com/albertina777/otelcol-demo-app.git
+    app.quarkus.io/quarkus-version: 3.15.1.redhat-00005
+    app.quarkus.io/commit-id: 4d40ec60f1887063d07351d98491c0f6585475b8
+    app.quarkus.io/vcs-uri: https://github.com/albertina777/otelcol-demo-app.git
+    app.quarkus.io/build-timestamp: 2025-01-23 - 15:50:03 +0000
+  labels:
+    app.kubernetes.io/name: my-service
+    app.kubernetes.io/version: 1.0.1-SNAPSHOT
+    app.kubernetes.io/managed-by: quarkus
+    app.openshift.io/runtime: quarkus
+  name: my-service
+spec:
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: my-service
