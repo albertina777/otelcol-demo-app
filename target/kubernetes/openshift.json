@@ -4,10 +4,10 @@
   "metadata" : {
     "annotations" : {
       "app.openshift.io/vcs-uri" : "https://github.com/albertina777/otelcol-demo-app.git",
-      "app.quarkus.io/quarkus-version" : "3.15.1.redhat-00005",
-      "app.quarkus.io/commit-id" : "4d40ec60f1887063d07351d98491c0f6585475b8",
+      "app.quarkus.io/quarkus-version" : "3.15.2.redhat-00003",
+      "app.quarkus.io/commit-id" : "a423cbdd3f089da115aeb0a8bcbf83e0cd96a2d1",
       "app.quarkus.io/vcs-uri" : "https://github.com/albertina777/otelcol-demo-app.git",
-      "app.quarkus.io/build-timestamp" : "2025-01-23 - 15:50:03 +0000"
+      "app.quarkus.io/build-timestamp" : "2025-01-27 - 10:32:02 +0000"
     },
     "labels" : {
       "app.kubernetes.io/name" : "my-service",
@@ -38,10 +38,10 @@
       "app.kubernetes.io/name" : "my-service",
       "app.kubernetes.io/version" : "1.0.1-SNAPSHOT"
     },
-    "name" : "s2i-java"
+    "name" : "openjdk-17"
   },
   "spec" : {
-    "dockerImageRepository" : "fabric8/s2i-java",
+    "dockerImageRepository" : "registry.access.redhat.com/ubi8/openjdk-17",
     "lookupPolicy" : {
       "local" : true
     }
@@ -52,10 +52,10 @@
   "metadata" : {
     "annotations" : {
       "app.openshift.io/vcs-uri" : "https://github.com/albertina777/otelcol-demo-app.git",
-      "app.quarkus.io/quarkus-version" : "3.15.1.redhat-00005",
-      "app.quarkus.io/commit-id" : "4d40ec60f1887063d07351d98491c0f6585475b8",
+      "app.quarkus.io/quarkus-version" : "3.15.2.redhat-00003",
+      "app.quarkus.io/commit-id" : "a423cbdd3f089da115aeb0a8bcbf83e0cd96a2d1",
       "app.quarkus.io/vcs-uri" : "https://github.com/albertina777/otelcol-demo-app.git",
-      "app.quarkus.io/build-timestamp" : "2025-01-23 - 15:50:03 +0000"
+      "app.quarkus.io/build-timestamp" : "2025-01-27 - 10:32:02 +0000"
     },
     "labels" : {
       "app.kubernetes.io/name" : "my-service",
@@ -76,10 +76,10 @@
   "metadata" : {
     "annotations" : {
       "app.openshift.io/vcs-uri" : "https://github.com/albertina777/otelcol-demo-app.git",
-      "app.quarkus.io/quarkus-version" : "3.15.1.redhat-00005",
-      "app.quarkus.io/commit-id" : "4d40ec60f1887063d07351d98491c0f6585475b8",
+      "app.quarkus.io/quarkus-version" : "3.15.2.redhat-00003",
+      "app.quarkus.io/commit-id" : "a423cbdd3f089da115aeb0a8bcbf83e0cd96a2d1",
       "app.quarkus.io/vcs-uri" : "https://github.com/albertina777/otelcol-demo-app.git",
-      "app.quarkus.io/build-timestamp" : "2025-01-23 - 15:50:03 +0000"
+      "app.quarkus.io/build-timestamp" : "2025-01-27 - 10:32:02 +0000"
     },
     "labels" : {
       "app.kubernetes.io/name" : "my-service",
@@ -103,7 +103,7 @@
       "sourceStrategy" : {
         "from" : {
           "kind" : "ImageStreamTag",
-          "name" : "s2i-java:2.3"
+          "name" : "openjdk-17:1.20"
         }
       }
     }
@@ -114,16 +114,16 @@
   "metadata" : {
     "annotations" : {
       "app.openshift.io/vcs-uri" : "https://github.com/albertina777/otelcol-demo-app.git",
-      "app.quarkus.io/quarkus-version" : "3.15.1.redhat-00005",
-      "app.quarkus.io/commit-id" : "4d40ec60f1887063d07351d98491c0f6585475b8",
+      "app.quarkus.io/quarkus-version" : "3.15.2.redhat-00003",
+      "app.quarkus.io/commit-id" : "a423cbdd3f089da115aeb0a8bcbf83e0cd96a2d1",
       "app.quarkus.io/vcs-uri" : "https://github.com/albertina777/otelcol-demo-app.git",
-      "app.quarkus.io/build-timestamp" : "2025-01-23 - 15:50:03 +0000"
+      "app.quarkus.io/build-timestamp" : "2025-01-27 - 10:32:02 +0000"
     },
     "labels" : {
       "app.kubernetes.io/managed-by" : "quarkus",
       "app.openshift.io/runtime" : "quarkus",
-      "app.kubernetes.io/name" : "my-service",
-      "app.kubernetes.io/version" : "1.0.1-SNAPSHOT"
+      "app.kubernetes.io/version" : "1.0.1-SNAPSHOT",
+      "app.kubernetes.io/name" : "my-service"
     },
     "name" : "my-service"
   },
@@ -131,8 +131,8 @@
     "replicas" : 1,
     "selector" : {
       "matchLabels" : {
-        "app.kubernetes.io/name" : "my-service",
-        "app.kubernetes.io/version" : "1.0.1-SNAPSHOT"
+        "app.kubernetes.io/version" : "1.0.1-SNAPSHOT",
+        "app.kubernetes.io/name" : "my-service"
       }
     },
     "template" : {
@@ -140,16 +140,16 @@
         "annotations" : {
           "alpha.image.policy.openshift.io/resolve-names" : "*",
           "app.openshift.io/vcs-uri" : "https://github.com/albertina777/otelcol-demo-app.git",
-          "app.quarkus.io/quarkus-version" : "3.15.1.redhat-00005",
-          "app.quarkus.io/commit-id" : "4d40ec60f1887063d07351d98491c0f6585475b8",
+          "app.quarkus.io/quarkus-version" : "3.15.2.redhat-00003",
+          "app.quarkus.io/commit-id" : "a423cbdd3f089da115aeb0a8bcbf83e0cd96a2d1",
           "app.quarkus.io/vcs-uri" : "https://github.com/albertina777/otelcol-demo-app.git",
-          "app.quarkus.io/build-timestamp" : "2025-01-23 - 15:50:03 +0000"
+          "app.quarkus.io/build-timestamp" : "2025-01-27 - 10:32:02 +0000"
         },
         "labels" : {
           "app.kubernetes.io/managed-by" : "quarkus",
           "app.openshift.io/runtime" : "quarkus",
-          "app.kubernetes.io/name" : "my-service",
-          "app.kubernetes.io/version" : "1.0.1-SNAPSHOT"
+          "app.kubernetes.io/version" : "1.0.1-SNAPSHOT",
+          "app.kubernetes.io/name" : "my-service"
         }
       },
       "spec" : {
@@ -179,10 +179,10 @@
   "metadata" : {
     "annotations" : {
       "app.openshift.io/vcs-uri" : "https://github.com/albertina777/otelcol-demo-app.git",
-      "app.quarkus.io/quarkus-version" : "3.15.1.redhat-00005",
-      "app.quarkus.io/commit-id" : "4d40ec60f1887063d07351d98491c0f6585475b8",
+      "app.quarkus.io/quarkus-version" : "3.15.2.redhat-00003",
+      "app.quarkus.io/commit-id" : "a423cbdd3f089da115aeb0a8bcbf83e0cd96a2d1",
       "app.quarkus.io/vcs-uri" : "https://github.com/albertina777/otelcol-demo-app.git",
-      "app.quarkus.io/build-timestamp" : "2025-01-23 - 15:50:03 +0000"
+      "app.quarkus.io/build-timestamp" : "2025-01-27 - 10:32:02 +0000"
     },
     "labels" : {
       "app.kubernetes.io/name" : "my-service",

@@ -1,0 +1,3 @@
+org/acme/opentelemetry/TracedResourceAuto.class
+org/acme/opentelemetry/ResourceClient.class
+org/acme/opentelemetry/PrimeNumberChecker.class
