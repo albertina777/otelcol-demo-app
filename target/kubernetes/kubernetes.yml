@@ -28,15 +28,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/version: 1.0.1-SNAPSHOT
       app.kubernetes.io/name: 'myservice '
+      app.kubernetes.io/version: 1.0.1-SNAPSHOT
   template:
     metadata:
       annotations:
         alpha.image.policy.openshift.io/resolve-names: '*'
       labels:
-        app.kubernetes.io/version: 1.0.1-SNAPSHOT
         app.kubernetes.io/name: 'myservice '
+        app.kubernetes.io/version: 1.0.1-SNAPSHOT
     spec:
       containers:
         - env:
