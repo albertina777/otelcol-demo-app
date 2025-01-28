@@ -21,8 +21,15 @@ public class TracedResourceAuto {
     @Produces(MediaType.TEXT_PLAIN)
     public String sayHello(@PathParam("name") String name) {
        // Log.info("sayhello: " + name);
-        
-        return "";
+       String response;
+       try {
+           response = "sayHello from" + name;
+           
+       } catch (Exception e) {
+           response=e.getMessage();
+          
+       }             
+     return response;
     }
 
     @GET

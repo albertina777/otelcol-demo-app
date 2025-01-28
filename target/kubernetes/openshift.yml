@@ -71,9 +71,9 @@ kind: Deployment
 metadata:
   annotations:
     app.quarkus.io/quarkus-version: 3.15.2.redhat-00003
-    app.quarkus.io/commit-id: b7a08d0d097bba4fee9c43828d946e1bc4222a8a
+    app.quarkus.io/commit-id: 5f2e98dd9cbe6112bfceed006227fa0af8d8a89b
     app.quarkus.io/vcs-uri: https://github.com/albertina777/otelcol-demo-app.git
-    app.quarkus.io/build-timestamp: 2025-01-27 - 14:56:00 +0000
+    app.quarkus.io/build-timestamp: 2025-01-28 - 05:23:56 +0000
   labels:
     app.kubernetes.io/managed-by: quarkus
     app.openshift.io/runtime: quarkus
@@ -86,9 +86,9 @@ spec:
       annotations:
         alpha.image.policy.openshift.io/resolve-names: '*'
         app.quarkus.io/quarkus-version: 3.15.2.redhat-00003
-        app.quarkus.io/commit-id: b7a08d0d097bba4fee9c43828d946e1bc4222a8a
+        app.quarkus.io/commit-id: 5f2e98dd9cbe6112bfceed006227fa0af8d8a89b
         app.quarkus.io/vcs-uri: https://github.com/albertina777/otelcol-demo-app.git
-        app.quarkus.io/build-timestamp: 2025-01-27 - 14:56:00 +0000
+        app.quarkus.io/build-timestamp: 2025-01-28 - 05:23:56 +0000
       labels:
         app.kubernetes.io/managed-by: quarkus
         app.openshift.io/runtime: quarkus
