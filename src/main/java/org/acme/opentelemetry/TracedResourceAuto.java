@@ -4,13 +4,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
-
+import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import io.quarkus.logging.Log;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 
 @Path("/")
+@RegisterRestClient
 public class TracedResourceAuto {
 
     @Context
